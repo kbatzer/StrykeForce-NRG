@@ -124,9 +124,7 @@ Here is a list of action names and what they do.
 | Action Name | Description |
 | ----------- | ----------- |
 | CONTROLLER |  Controller inputs are used to drive car. |
-| TRACK_LINE | Basic line tracking using the line tracking sensor. As of
-9/18/2019, this action will never advance to the next action in the list,
-so only use this as the last thing you want your car to do.
+| TRACK_LINE | Basic line tracking using the line tracking sensor. As of 09/18/2019, this action will never advance to the next action in the list, so only use this as the last thing you want your car to do.
 | TRACK_LINE_ULTRASONIC |  Line tracking with exit condition based on ultrasonic sensor. |
 | LINE_TRACK_RESYNC | Line tracking with exit condition based on being aligned for LINE_TRACKED_RESET iterations |
 | FORWARD_ULTRASONIC | Move forward until ultrasonic sensor detects object within specified distance |
