@@ -74,19 +74,19 @@ sequence where the Arduino Robot Car drives itself autonomously before giving
 control back to the BlueTooth controller:
 
 ```C+
-DriveState_E driveStateSequence[] = {TRACK_LINE_ULTRASONIC,
-                                     LEFT_90,
-                                     FORWARD_ULTRASONIC,
-                                     LEFT_90,
-                                     TRACK_LINE_ULTRASONIC,
-                                     RIGHT_45,
-                                     FWD_6IN,
-                                     FWD_6IN,
-                                     FWD_6IN,
-                                     RIGHT_45,
-                                     FWD_TILL_LINE,
-                                     LINE_TRACK_RESYNC,
-                                     CONTROLLER};
+DriveState_E driveStateSequence[] = {TRACK_LINE_ULTRASONIC, // 1.
+                                     LEFT_90,               // 2.
+                                     FORWARD_ULTRASONIC,    // 3.
+                                     LEFT_90,               // 4.
+                                     TRACK_LINE_ULTRASONIC, // 5.
+                                     RIGHT_45,              // 6.
+                                     FWD_6IN,               // 7.
+                                     FWD_6IN,               // 8.
+                                     FWD_6IN,               // 9.
+                                     RIGHT_45,              // 10.
+                                     FWD_TILL_LINE,         // 11.
+                                     LINE_TRACK_RESYNC,     // 12.
+                                     CONTROLLER};           // 13.
 ```
 
 This sequence tells the Arduino Robot Car several things to do:
