@@ -149,3 +149,8 @@ and how they work
 | RIGHT_SCALE |  Modifies how quickly the RIGHT motors move. Helps remove natural "drift" between the left and right motors | 1.0 | Any positive number |
 | LINE_TRACKED_RESET | Determines how many times LINE_TRACK_RESYNC state will check for a line once the car loses track of the line its on. | 100 | Any positive integer |
 | SPEED | Percentage controlling how quickly the motors will move. It is not recommended to change this value | 50 | Integers from 0 to 100 |
+
+## Resources
+Arduino IDE download: https://www.arduino.cc/en/Main/Software
+Arduino Language Reference: https://www.arduino.cc/reference/en/
+Learn C++: https://www.codecademy.com/learn/learn-c-plus-plus
