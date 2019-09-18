@@ -9,8 +9,8 @@ You will also find examples of how to have your Arduino Robot Car drive itself
 using the built-in actions developed by Kyle Batzer. Descriptions of each
 built-in action are also provided in this below. Some of these actions can be
 tweaked by changing some numeric variables in the code. The names of these
-variables, their location, and what they do are also documented below. We will
-also be including a section on how to write your own actions and integrate them
+variables and what they do are also documented below. In the near future we will
+also include a section on how to write your own actions and integrate them
 into the existing code.
 
 We also provide links to helpful resources to get started learning how to
@@ -56,8 +56,8 @@ a message will be displayed above the black box reading "Upload complete".
 
 ## Using the built-in robot actions
 After downloading the code, you'll find the place to store your Arduino Robot
-Car action sequences on line 39 of NRG_TankControl.ino. On this line, a
-variable called `driveStateSequence`. This is a list of comma-separated
+Car action sequences on line 39 of NRG_TankControl.ino. On this line, you'll
+find a variable called `driveStateSequence`. This is a list of comma-separated
 commands the robot will follow, starting with the first command and stopping
 after completing the last command. Initially, the line will look like this:
 
@@ -73,7 +73,7 @@ perform more complicated actions on its own. For example, here's a command
 sequence where the Arduino Robot Car drives itself autonomously before giving
 control back to the BlueTooth controller:
 
-```C+
+```C++
 DriveState_E driveStateSequence[] = {TRACK_LINE_ULTRASONIC, // 1.
                                      LEFT_90,               // 2.
                                      FORWARD_ULTRASONIC,    // 3.
@@ -89,7 +89,7 @@ DriveState_E driveStateSequence[] = {TRACK_LINE_ULTRASONIC, // 1.
                                      CONTROLLER};           // 13.
 ```
 
-This sequence tells the Arduino Robot Car several things to do:
+This sequence tells the Arduino Robot Car to do several things in this order:
 1. Use the line tracker sensor to follow a line until the ultrasonic sensor
 sees a wall.
 2. Turn left 90 degrees.
@@ -110,8 +110,8 @@ As the Arduino Robot Car moves from one action to the next, we say that it is
 *changing states* or moving to the next *drive state* in the *drive state
 sequence*. When one *drive state* is able to move onto the next action in the
 list, that means it must have an *exit condition*. Another name for an
-*exit condition* is *terminating condition*
-which tells the car to stop the current action and go to the next one. You can
+*exit condition* is *terminating condition*.
+These tell the car to stop the current action and go to the next one. You can
 see which *drive states* have *exit conditions* in the next section.
 
 ## Descriptions of built-in robot actions
@@ -121,7 +121,7 @@ Some of the actions can be tweaked by modifying global variables which appear
 in the descriptions (and in the code) with NAMES_LIKE_THIS.
 Here is a list of action names and what they do.
 
-| Action Name | Description |
+| Action Name/Drive State | Description |
 | ----------- | ----------- |
 | CONTROLLER |  Controller inputs are used to drive car. |
 | TRACK_LINE | Basic line tracking using the line tracking sensor. As of 09/18/2019, this action will never advance to the next action in the list, so only use this as the last thing you want your car to do.
