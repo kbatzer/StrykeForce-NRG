@@ -55,8 +55,21 @@ CarCommand_T carCommand               = {.direction=STOP,
                                          };
 
 SensorFeedback_T sensors              = {.distance = 0};
+
 Servo myservo;
+Servo liftServo;
+Servo bucketServo;
+
 int servoAngle                        = 45;
+
+const int liftServoDumpAngle          = 0;
+const int liftServoLiftAngle          = 0;
+const int liftServoLoadAngle          = 0;
+
+const int bucketServoDumpAngle        = 0;
+const int bucketServoLiftAngle        = 0;
+const int bucketServoLoadAngle        = 0;
+
 bool searching                        = true;
 int SPEED                             = 50; //SPEED is in percent
 
@@ -698,4 +711,31 @@ void debugPrint()
   outputString.concat(" servo: ");
   outputString.concat(servoAngle);
   Serial.println(outputString);
+}
+
+//****************************************************************************************/
+//
+//****************************************************************************************/
+void SetBucketLoad()
+{
+  liftServo.write(liftServoLoadAngle);
+  bucketServo.write(bucketServoLoadAngle);
+}
+
+//****************************************************************************************/
+//
+//****************************************************************************************/
+void SetBucketLift()
+{
+  liftServo.write(liftServoLiftAngle);
+  bucketServo.write(bucketServoLiftAngle);
+}
+
+//****************************************************************************************/
+//
+//****************************************************************************************/
+void SetBucketDump()
+{
+  liftServo.write(liftServoDumpAngle);
+  bucketServo.write(bucketServoDumpAngle);
 }
