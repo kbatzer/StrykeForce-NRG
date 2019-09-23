@@ -54,6 +54,27 @@ CarCommand_T carCommand               = {.direction=STOP,
                                          .rightScale= RIGHT_SCALE //Pick a number from 0 to 1 to balance your motors if one side is faster than the other
                                          };
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Encoder Variables and Library
+
+#include <Encoder.h>
+
+Encoder myEncL(A0, A1); //Left Encoder
+Encoder myEncR(A2, A3); //Right Encoder
+long oldPositionL  = -999; //Initialize position
+long newPositionL;
+long oldPositionR  = -999; //Initialize position
+long newPositionR;
+int distance; //Distance for car to drive in inches
+double encoderDistance; //Distance for car to drive in encoder counts
+double encoderScale = 1.3; //For converting from inches to encoder counts
+int leftSpeed;
+int rightSpeed;
+bool leftStopped = false;
+bool rightStopped = false;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 SensorFeedback_T sensors              = {.distance = 0};
 Servo myservo;
 int servoAngle                        = 45;
@@ -393,6 +414,13 @@ int servoOffset                       = -4;
           }
           break;
 
+        //****************************************************************************************/
+        // Car will drive until encoder conditions are satisfied
+        //****************************************************************************************/
+        case ENCODER_DRIVE:
+          encoderDrive(distance, speed);
+          StateTransitionCheck(true);
+          break;
 
         //****************************************************************************************/
         // If undefined state, move to CONTROLLER
@@ -673,6 +701,51 @@ int GetDistance() {
 }
 
 
+//****************************************************************************************/
+//
+//****************************************************************************************/
+void encoderDrive(double distance, long speed)
+{
+  encoderDistance = distance*encoderScale;
+  leftSpeed = int(float(speed)*LEFT_SCALE);
+  rightSpeed = int(float(speed)*RIGHT_SCALE);
+  Serial.println(encoderDistance);
+  while(!leftStopped || !rightStopped){ //while encoder position has not been reached for either motor
+
+    SetMotorSpeeds(leftSpeed, rightSpeed, &carCommand); //power left and right motors
+    carCommand.direction = FORWARD;
+    MoveCar(&carCommand);
+
+    if (oldPositionL >  encoderDistance) { //if left motor surpasses encoder position stop left motor
+      SetMotorSpeeds (0,rightSpeed,&carCommand) ;
+      carCommand.direction = FORWARD;
+      MoveCar(&carCommand);
+      leftStopped = true;
+      leftSpeed = 0;
+    }
+
+    if (oldPositionR >  encoderDistance) { //if left motor surpasses encoder position stop right motor
+      SetMotorSpeeds (leftSpeed,0,&carCommand);
+      carCommand.direction = FORWARD;
+      MoveCar(&carCommand);
+      rightStopped = true;
+      rightSpeed = 0;
+    }
+
+    long newPositionL = myEncL.read(); //read encoder
+    long newPositionR = myEncR.read();
+
+    if (newPositionL != oldPositionL) { //count encoder position
+      oldPositionL = newPositionL;
+    }
+
+    if (newPositionR != oldPositionR) {
+      oldPositionR = newPositionR;
+    }
+
+  }
+  Stop(0,1,1); //Stop car
+}
 
 
 //****************************************************************************************/

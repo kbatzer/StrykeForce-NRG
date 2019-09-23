@@ -105,6 +105,7 @@ typedef enum DriveState_E
   BACK_6IN,
   SEARCH,
   DELAY_3S,
+  ENCODER_DRIVE
 } DriveState_E;
 
 
