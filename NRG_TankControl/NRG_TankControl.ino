@@ -70,9 +70,11 @@ const int bucketServoDumpAngle        = 0;
 const int bucketServoLiftAngle        = 0;
 const int bucketServoLoadAngle        = 0;
 
+
+
+
 bool searching                        = true;
 int SPEED                             = 50; //SPEED is in percent
-
 
 int driveStateIndex                   = 0;
 DriveState_E driveState               = driveStateSequence[driveStateIndex]; //Initialize which State the car starts in
@@ -154,21 +156,35 @@ int servoOffset                       = -4;
   void ControllerButtonChecks()
   {
     //if button Y is pressed the car jumps into Controller State
-    if isButtonPressed(controllerInputs.buttons, BUTTON_Y_MASK)
+    if (isButtonPressed(controllerInputs.buttons, BUTTON_Y_MASK))
     {
       startOfStateTime = micros();
       driveState = CONTROLLER;
     }
-    else if isButtonPressed(controllerInputs.buttons, BUTTON_A_MASK)
+    else if (isButtonPressed(controllerInputs.buttons, BUTTON_A_MASK))
     {
       startOfStateTime = micros();
       driveState = AUTO;
     }
-    else if isButtonPressed(controllerInputs.buttons, BUTTON_X_MASK)
+    else if (isButtonPressed(controllerInputs.buttons, BUTTON_X_MASK))
     {
       startOfStateTime = micros();
       driveState = TRACK_LINE;
     }
+    else if (isButtonPressed(controllerInputs.buttons, BUTTON_R1_MASK))
+    {
+      SetBucketLift();
+    }
+    else if (isButtonPressed(controllerInputs.buttons, BUTTON_R3_MASK))
+    {
+      SetBucketLoad();
+    }
+    else if (isButtonPressed(controllerInputs.buttons, BUTTON_B_MASK))
+    {
+      SetBucketDump();
+    }
+
+    // TODO: Add cases for forklift/claw operation.
   }
 
 
