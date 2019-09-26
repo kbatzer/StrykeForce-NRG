@@ -54,7 +54,10 @@ CarCommand_T carCommand               = {.direction=STOP,
                                          .rightScale= RIGHT_SCALE //Pick a number from 0 to 1 to balance your motors if one side is faster than the other
                                          };
 
-/////////////////////////////////////////////////////////////////////////////////////
+
+SensorFeedback_T sensors              = {.distance = 0};
+
+///////////////////////////////////////////////////////////////////////////////
 // Encoder Variables and Library
 
 #include <Encoder.h>
@@ -73,10 +76,8 @@ int rightSpeed;
 bool leftStopped = false;
 bool rightStopped = false;
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-SensorFeedback_T sensors              = {.distance = 0};
-
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 /*** Bucket Servos ***/
 Servo liftServo;
 Servo bucketServo;
@@ -88,7 +89,7 @@ const int liftServoLoadAngle          = 0;
 const int bucketServoDumpAngle        = 0;
 const int bucketServoLiftAngle        = 0;
 const int bucketServoLoadAngle        = 0;
-/*********************/
+///////////////////////////////////////////////////////////////////////////////
 
 /*** Ultrasonic Servo ***/
 Servo myservo;
