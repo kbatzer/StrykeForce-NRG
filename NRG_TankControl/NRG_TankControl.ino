@@ -56,11 +56,9 @@ CarCommand_T carCommand               = {.direction=STOP,
 
 SensorFeedback_T sensors              = {.distance = 0};
 
-Servo myservo;
+/*** Bucket Servos ***/
 Servo liftServo;
 Servo bucketServo;
-
-int servoAngle                        = 45;
 
 const int liftServoDumpAngle          = 0;
 const int liftServoLiftAngle          = 0;
@@ -69,9 +67,12 @@ const int liftServoLoadAngle          = 0;
 const int bucketServoDumpAngle        = 0;
 const int bucketServoLiftAngle        = 0;
 const int bucketServoLoadAngle        = 0;
+/*********************/
 
-
-
+/*** Ultrasonic Servo ***/
+Servo myservo;
+int servoAngle                        = 45;
+/************************/
 
 bool searching                        = true;
 int SPEED                             = 50; //SPEED is in percent
