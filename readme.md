@@ -28,24 +28,24 @@ Arduino IDE is the tool we will use to edit the code running on the Arduino.
 IDE
 
 ### Download and Install the code
-1. Download the code from this page by selecting the green "Clone or download"
-button.
-2. Select the "Download ZIP" button.
-3. Extract the ZIP file.
-4. Open Arduino IDE.
-5. At the top left of Arduino IDE, Select "File", then "Open...".
-6. Navigate to the extracted folder "StrykeForce-NRG-master", then into the
- "NRG_TankControl" folder.
-7. Select NRG_TankControl.ino
-8. Select Open.
+1. Download the code by going to the 'Releases' section of this page.
+2. Download NRG_TankControl.zip
+3. Open the Arduino code editor
+4. Select the 'Sketch' button in the taskbar.
+5. Select 'Include Library'
+6. Select 'Add .ZIP Library...'
+7. Navigate to NRG_TankControl.zip, click on it, then select 'Open'
 
-You should now have the tank control code open in Arduino IDE.
+The Arduino drive code will now be available as an example library, and can be
+accessed by:
 
-**Note: Using "Save as..." to save another copy of this file is not
-recommended.**
-This code relies on code in other files in the same directory in order to
-function. Without these files, you will not be able to compile or upload your
-code.
+1. In the Arduino code editor, select 'Sketch'
+2. Select 'Include Library'
+3. Scroll to the bottom of the list and select NRG_TankControl
+
+The included library is read-only, but you can save copies of these files to
+make your own modifications. Should you need the original files, they will be
+available in the 'Include Library' menu.
 
 ### Upload the code to your Arduino Robot Car
 1. Open NRG_TankControl.ino in Arduino IDE if you have not already done so.
