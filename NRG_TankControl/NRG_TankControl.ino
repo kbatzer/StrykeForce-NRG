@@ -60,7 +60,7 @@ SensorFeedback_T sensors              = {.distance = 0};
 ///////////////////////////////////////////////////////////////////////////////
 // Encoder Variables and Library
 
-#include <Encoder.h>
+#include "Encoder.h"
 
 Encoder myEncL(A0, A1); //Left Encoder
 Encoder myEncR(A2, A3); //Right Encoder
