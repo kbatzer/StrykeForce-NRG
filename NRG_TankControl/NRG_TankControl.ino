@@ -71,6 +71,7 @@ long newPositionR;
 int distance; //Distance for car to drive in inches
 double encoderDistance; //Distance for car to drive in encoder counts
 double encoderScale = 1.3; //For converting from inches to encoder counts
+int encoderSpeed = 0;
 int leftSpeed;
 int rightSpeed;
 bool leftStopped = false;
@@ -449,7 +450,7 @@ int servoOffset                       = -4;
         // Car will drive until encoder conditions are satisfied
         //****************************************************************************************/
         case ENCODER_DRIVE:
-          encoderDrive(distance, speed);
+          encoderDrive(distance, encoderSpeed);
           StateTransitionCheck(true);
           break;
 
